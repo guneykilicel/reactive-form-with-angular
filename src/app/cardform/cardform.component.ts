@@ -8,7 +8,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class CardformComponent {
   cardForm = new FormGroup({
-    name: new FormControl(''),
-    
+    name: new FormControl(null),
+
   })
 }
