@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { DateFormControl } from '../date-form-control';
 
 @Component({
   selector: 'app-cardform',
@@ -17,7 +18,7 @@ export class CardformComponent {
       Validators.minLength(16),
       Validators.maxLength(16),
     ]),
-    expiration: new FormControl(null, [
+    expiration: new DateFormControl(null, [
       Validators.required,
       Validators.pattern(/^(0[1-9]|1[0-2]\/\d{2}$)/),
     ]),
@@ -32,14 +33,23 @@ export class CardformComponent {
     
   }
 
+  ResetForm() {
+    this.cardForm.reset();
+  }
+
   get nameControl() {
     return this.cardForm.get('name') as FormControl;
   }
   get cardNumberControl() {
     return this.cardForm.get('cardNumber') as FormControl;
   }
-  get expirationControl() {
-    return this.cardForm.get('expiration') as FormControl;
+  get expirationControl(): DateFormControl {
+    const control = this.cardForm.get('expiration');
+    if (control instanceof DateFormControl) {
+      return control;
+    } else {
+      throw new Error('Expiration control is not an instance of DateFormControl');
+    }
   }
   get securityCodeControl() {
     return this.cardForm.get('securityCode') as FormControl;

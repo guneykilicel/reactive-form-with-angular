@@ -4,6 +4,7 @@
     <app-input label="Kart Numarası" [control]="cardNumberControl"></app-input>
     <app-input label="Son Kullanma Tarihi" [control]="expirationControl"></app-input>
     <app-input label="Güvenlik Kodu" [control]="securityCodeControl"></app-input>
+    <button class="button is-warning" (click)="ResetForm()" type="button">Temizle</button>
     <button class="button is-primary" [disabled]="cardForm.invalid" type="submit">Kaydet</button>
 </form>
 

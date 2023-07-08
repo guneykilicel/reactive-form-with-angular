@@ -17,5 +17,12 @@
             {{control.errors?.['minlength']?.['requiredLength']}}
             karakter içermelidir.
         </div>
+        <div class="help is-danger" *ngIf="control.errors?.['maxlength']">
+            Girdiğiniz isim
+            {{control.errors?.['maxlength']?.['actualLength']}}
+            karakter içermektedir fakat maksimum
+            {{control.errors?.['maxlength']?.['requiredLength']}}
+            karakter içermelidir.
+        </div>
     </ng-container>
 </div>
