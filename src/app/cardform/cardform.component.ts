@@ -12,9 +12,20 @@ export class CardformComponent {
       Validators.required,
       Validators.minLength(3),
     ]),
-    cardNumber: new FormControl(null),
-    expiration: new FormControl(null),
-    securityCode: new FormControl(null),
+    cardNumber: new FormControl(null, [
+      Validators.required,
+      Validators.minLength(16),
+      Validators.maxLength(16),
+    ]),
+    expiration: new FormControl(null, [
+      Validators.required,
+      Validators.pattern(/^(0[1-9]|1[0-2]\/\d{2}$)/),
+    ]),
+    securityCode: new FormControl(null, [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(3),
+    ]),
   });
 
   onSubmit() {
