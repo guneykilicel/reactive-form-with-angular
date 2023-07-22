@@ -1,25 +1,23 @@
-<form [formGroup]="cardForm">
-    <input type="text" formControlName="name">
-    <ng-container 
-    *ngIf="
-    cardForm.get('name')?.dirty && 
-    cardForm.get('name')?.touched &&
-    cardForm.get('name')?.errors
-    "
-    >
-        <div *ngIf="cardForm.get('name')?.errors?.['required']">
-            *Zorunlu Alan.
+<div class="container">
+    <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+        <!-- <app-input [control]?="cardForm.get('name')"></app-input> -->
+        <app-input label="Ad Soyad" [control]="nameControl"></app-input>
+        <app-input label="Kart Numarası" [control]="cardNumberControl"></app-input>
+        <div class="columns">
+            <div class="column">
+                <app-input label="Son Kullanma Tarihi" [control]="expirationControl"></app-input>
+            </div>
+            <div class="column">
+                <app-input label="Güvenlik Kodu" [control]="securityCodeControl"></app-input>
+            </div>
         </div>
-        <div *ngIf="cardForm.get('name')?.errors?.['minlength']">
-            Girdiğiniz isim
-            {{cardForm.get('name')?.errors?.['minlength']?.['actualLength']}}
-            karakter içermektedir fakat minimum
-            {{cardForm.get('name')?.errors?.['minlength']?.['requiredLength']}}
-            karakter içermelidir.
+        <div class="buttons" style="display: flex; justify-content: flex-end;">
+            <button class="button is-warning" (click)="ResetForm()" type="button">Temizle</button>
+            <button class="button is-primary" [disabled]="cardForm.invalid" type="submit">Kaydet</button>
         </div>
-    </ng-container>
-</form>
 
-<div>Form içeriği: {{cardForm.value | json}}</div>
-<div>Form valid mi: {{cardForm.valid | json}}</div>
-<div>Form hataları: {{cardForm.get('name')?.errors | json}}</div>
+    </form>
+    <div>Form içeriği: {{cardForm.value | json}}</div>
+    <div>Form valid mi: {{cardForm.valid | json}}</div>
+    <div>Form hataları: {{cardForm.get('name')?.errors | json}}</div>
+</div>
