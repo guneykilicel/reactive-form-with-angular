@@ -11,14 +11,14 @@
             *Zorunlu Alan.
         </div>
         <div class="help is-danger" *ngIf="control.errors?.['minlength']">
-            Girdiğiniz isim
+            Girdiniz
             {{control.errors?.['minlength']?.['actualLength']}}
             karakter içermektedir fakat minimum
             {{control.errors?.['minlength']?.['requiredLength']}}
             karakter içermelidir.
         </div>
         <div class="help is-danger" *ngIf="control.errors?.['maxlength']">
-            Girdiğiniz isim
+            Girdiniz
             {{control.errors?.['maxlength']?.['actualLength']}}
             karakter içermektedir fakat maksimum
             {{control.errors?.['maxlength']?.['requiredLength']}}
