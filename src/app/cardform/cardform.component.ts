@@ -8,10 +8,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class CardformComponent {
   cardForm = new FormGroup({
-    name: new FormControl(null,[
+    name: new FormControl(null, [
       Validators.required,
       Validators.minLength(3),
     ]),
+  });
 
-  })
+  get nameControl() {
+    return this.cardForm.get('name') as FormControl;
+  }
 }
